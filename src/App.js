@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import httpClient from './services/httpClient'
+import api from './services/api'
 
 import "./styles.css";
 
@@ -10,7 +10,7 @@ const App = () => {
   const listRepository = async () => {
 
     try {
-      const { data } = await httpClient.get('repositories')
+      const { data } = await api.get('repositories')
       setState(data)
 
     } catch(e) {
@@ -25,7 +25,7 @@ const App = () => {
   const handleAddRepository = async () => {
 
     try {
-      const { data } = await httpClient.post('repositories', {
+      const { data } = await api.post('repositories', {
         title: `BootCamp-GoStack-Challenge-One-React`,
         url: 'https://github.com/matheuSantos-me',
         techs: ['React', 'Node']
@@ -42,7 +42,7 @@ const App = () => {
   const handleRemoveRepository = async (id) => {
 
     try {
-      await httpClient.delete(`repositories/${id}`)
+      await api.delete(`repositories/${id}`)
       const newState = state.filter(item => item.id !== id)
       setState(newState)
 
