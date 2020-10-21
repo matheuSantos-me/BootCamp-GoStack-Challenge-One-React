@@ -1,9 +1,9 @@
 import React from "react";
 import { render, fireEvent, act } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
-import api from "../services/api";
+import httpClient from "../services/httpClient";
 
-const apiMock = new MockAdapter(api);
+const apiMock = new MockAdapter(httpClient);
 
 import App from "../App";
 
